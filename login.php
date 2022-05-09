@@ -27,6 +27,7 @@
                     if($email == $row["email"] && password_verify($password, $row["password"])) {
                         $_SESSION["user"] = array(
                             "id" => $row["id"],
+                            "username" => $row["username"],
                             "email" => $row["email"],
                             "password" => $row["password"],
                             "admin" => $row["admin"]

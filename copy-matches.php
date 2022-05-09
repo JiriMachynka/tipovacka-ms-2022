@@ -22,6 +22,7 @@
             if ($row["id"] == $id_user) {
                 $_SESSION["user"] = array(
                     "id" => $row["id"],
+                    "username" => $row["username"],
                     "email" => $row["email"],
                     "password" => $row["password"],
                     "admin" => $row["admin"]
