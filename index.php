@@ -111,5 +111,6 @@ include_once("config.php");
         <script src="js/time.js"></script>
         <!-- Font Awesome -->
         <script src="https://kit.fontawesome.com/8ee42a1118.js" crossorigin="anonymous"></script>
+        <script src="js/general.js"></script>
     </body>
     </html>

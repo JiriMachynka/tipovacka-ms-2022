@@ -7,6 +7,7 @@
                 <li><span id='current-time'></span></li>
     <?php if($_SESSION["user"]["admin"] == 1) { ?>
         <li><a href='?link=manage-matches.php'>Spravovat zápasy</a></li>
+        <li><a href='?link=manage-accounts.php'>Spravovat účty</a></li>
         <!-- <li><a href='?link=null-points.php'>Testy</a></li> -->
     <?php } ?>
                 <li><a href='?link=logout.php'>Odhlásit se</a></li>

@@ -78,7 +78,7 @@
     $result = $conn->query($sql);
     if ($result->num_rows > 0) {
         echo("
-        <h3 class='text-center fw-bold'>Přehled zápasů</h3>
+        <h3>Přehled zápasů</h3>
         <table>
         <thead>
         <tr>
