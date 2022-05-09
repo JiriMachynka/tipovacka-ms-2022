@@ -1,0 +1,8 @@
+[*] Při smazání záznamu ve správě zápasů smazat záznam i z tipů do tipovačky
+[*] Upravení tipů uživatele
+[*] Funčknost upravení long shotů do tipovačky
+[*] Kolik času zbývá do začátku zápasu
+[*] Uzamykání tipů
+[*] Vyhodnocení tipů
+[*] Funkční kopírování zápasů při tvorbě nového uživatele
+[] Test celé aplikace
