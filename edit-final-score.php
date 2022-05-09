@@ -5,12 +5,12 @@
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $_SESSION["final_match_score"] = array(
-                "id" => $row["id"],
-                "start" => $row["start"],
-                "home" => $row["home"],
+                "id" =>         $row["id"],
+                "start" =>      $row["start"],
+                "home" =>       $row["home"],
                 "home_score" => $row["home_score"],
                 "away_score" => $row["away_score"],
-                "away" => $row["away"],
+                "away" =>       $row["away"],
             );
         }
     }

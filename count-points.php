@@ -12,19 +12,18 @@
         while($row = $result->fetch_assoc()) {
             $home_score_tip = $row["home_score_tip"];
             $away_score_tip = $row["away_score_tip"];
+            // print_r($_SESSION["final_match_score"]);
 
             $points = 0;
-            //Výhra domácích
+            // Výhra domácích
             if ($home_score > $away_score && $home_score_tip > $away_score_tip) {
-                if ($home_score == $home_score_tip && $away_score == $away_score_tip) $points = 3;
-                else $points = 1;
-            //Výhra hosté
+                $points = ($home_score == $home_score_tip && $away_score == $away_score_tip) ? 3 : 1;
+            // Výhra hosté
             } elseif ($home_score < $away_score && $home_score_tip < $away_score_tip) {
-                if ($home_score == $home_score_tip && $away_score == $away_score_tip) $points = 3;
-                else $points = 1;
+                $points = ($home_score == $home_score_tip && $away_score == $away_score_tip) ? 3 : 1;
+            // Remíza
             } elseif ($home_score == $away_score && $home_score_tip == $away_score_tip) {
-                if ($home_score > $home_score_tip) $points = 3;
-                else  $points = 1;
+                $points = ($home_score == $home_score_tip) ? 3 : 1;
             }
             $id_user = $row["id_user"];
             $sql2 = "UPDATE tips 
@@ -33,6 +32,7 @@
             $conn->query($sql2);
         }
     }
+    // print_r($_SESSION["final_match_score"]);
     unset($_SESSION["final_match_score"]);
     header("Location: ?link=manage-matches.php");
 

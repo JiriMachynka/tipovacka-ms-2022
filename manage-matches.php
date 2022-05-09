@@ -178,9 +178,12 @@
         unset($_SESSION["edited_match"]);
         header("Location: ?link=manage-matches.php");
     } elseif ($_POST && $_POST["submit"] == 'Konečný výsledek') {
-        $home_score = $_POST["home_score"];
-        $away_score = $_POST["away_score"];
+        $_SESSION["final_match_score"]["home_score"] = $_POST["home_score"];
+        $_SESSION["final_match_score"]["away_score"] = $_POST["away_score"];
         $match_id = $_SESSION["final_match_score"]["id"];
+
+        $home_score = $_SESSION["final_match_score"]["home_score"];
+        $away_score = $_SESSION["final_match_score"]["away_score"];
 
         $sql = "UPDATE matches 
                 SET home_score = '$home_score', 
