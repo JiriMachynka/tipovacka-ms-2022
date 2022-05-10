@@ -34,11 +34,11 @@
         <h6 for='floatingInput'>Semifinalista 2:</h6>
         <select class='form-control' name='semifinalist2' id='semifinalist2'>
         </select>
-        <h6 class='info' for='floatingInput'><abbre title='Zadejte příjmení střelce, &#013;je-li nutno tak i křestní jméno ve formátu: &#013;Jméno Příjmení'>Střelec 1:</abbre></h6>
+        <h6 class='info' for='floatingInput'><abbre title='Zadejte jméno a příjmení střelce, &#013;ve formátu: Jméno Příjmení'>Střelec 1:</abbre></h6>
         <input type="text" class='form-control' name='shooter1' id='shooter1' 
         <?php if(isset($_SESSION["long-shot"]["shooter1"])): echo("value=\"".$_SESSION["long-shot"]["shooter1"]."\""); endif; ?>        
         />
-        <h6 class='info' for='floatingInput'><abbre title='Zadejte příjmení střelce, &#013;je-li nutno tak i křestní jméno ve formátu: &#013;Jméno Příjmení'>Střelec 2:</abbre></h6>
+        <h6 class='info' for='floatingInput'><abbre title='Zadejte jméno a příjmení střelce, &#013;ve formátu: Jméno Příjmení'>Střelec 2:</abbre></h6>
         <input type="text" class='form-control' name='shooter2' id='shooter2'
         <?php if(isset($_SESSION["long-shot"]["shooter2"])): echo("value=\"".$_SESSION["long-shot"]["shooter2"]."\""); endif; ?>
         />
@@ -54,8 +54,8 @@
         $finalist = $_POST["finalist"];
         $semifinalist1 = $_POST["semifinalist1"];
         $semifinalist2 = $_POST["semifinalist2"];
-        $shooter1 = $_POST["shooter1"];
-        $shooter2 = $_POST["shooter2"];
+        $shooter1 = ucwords($_POST["shooter1"], " ");
+        $shooter2 = ucwords($_POST["shooter2"], " ");
 
         $id = $_SESSION["user"]["id"];
         $sql = "UPDATE users
@@ -67,7 +67,20 @@
                     shooter2 = '$shooter2'
                 WHERE id LIKE $id";
         $conn->query($sql);
-        header("Location: ?link=my-profile.php&saved=1");
+        $shooters = array($shooter1, $shooter2);
+        foreach ($shooters as $shooter) {
+            $sql2 = "SELECT * 
+                    FROM shooters 
+                    WHERE shooter LIKE $shooter";
+            $result2 = $conn->query($sql2);
+            print_r($result2);
+            // if (empty($result)) {
+            //     $sql2 = "INSERT shooters (shooter, goals)
+            //             VALUES ('$shooter', 0)";
+            //     $conn->query($sql2);
+            // }
+        }
+        // header("Location: ?link=my-profile.php&saved=1");
         
     }
 
