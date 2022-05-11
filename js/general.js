@@ -3,5 +3,5 @@ function copy(text) {
 }
 
 function copyEmailBody(id) {
-    navigator.clipboard.writeText(`localhost/index.php?link=password-reset.php&id=${id}`)
+    navigator.clipboard.writeText(`www.moje-tipovacka.cz/index.php?link=password-reset.php&id=${id}`)
 }
