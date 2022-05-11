@@ -30,7 +30,7 @@
     $id_user = $_SESSION["user"]["id"];
     if($result->num_rows > 0) {
         echo("
-            <h3 class='text-center fw-bold'>Přehled zápasů</h3>
+            <h3>Přehled zápasů</h3>
             <table id='my-tips'>
                 <thead>
                     <tr>
