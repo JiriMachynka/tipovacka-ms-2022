@@ -68,19 +68,18 @@
                 WHERE id LIKE $id";
         $conn->query($sql);
         $shooters = array($shooter1, $shooter2);
-        foreach ($shooters as $shooter) {
-            $sql2 = "SELECT * 
+        foreach ($shooters as &$shooter) {
+            $sql_ = "SELECT * 
                     FROM shooters 
-                    WHERE shooter LIKE $shooter";
-            $result2 = $conn->query($sql2);
-            print_r($result2);
-            // if (empty($result)) {
-            //     $sql2 = "INSERT shooters (shooter, goals)
-            //             VALUES ('$shooter', 0)";
-            //     $conn->query($sql2);
-            // }
+                    WHERE shooter LIKE '$shooter'";
+            $result_ = $conn->query($sql_);
+            if ($result_->num_rows == 0) {
+                $newShooter = "INSERT INTO shooters (shooter, goals)
+                                VALUES ('$shooter', 0)";
+                $conn->query($newShooter);
+            }
         }
-        // header("Location: ?link=my-profile.php&saved=1");
+        header("Location: ?link=my-profile.php&saved=1");
         
     }
 
