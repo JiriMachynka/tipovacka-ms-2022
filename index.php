@@ -19,7 +19,8 @@ include_once("config.php");
             <?php
             include_once("navbar.php");
             
-            if(isset($_GET["link"])) include_once($_GET["link"]);
+            if(!isset($_SESSION["user"]) && isset($_GET["link"]) == "password-reset.php") include_once($_GET["link"]);
+            elseif(isset($_GET["link"])) include_once($_GET["link"]);
             elseif(!isset($_GET["link"]) && !isset($_SESSION["user"])) include_once("login.php");
             else {
                 //Zjištění celkového počtu hráčů

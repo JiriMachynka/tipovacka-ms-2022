@@ -24,6 +24,7 @@
                     SET password = $password
                     WHERE id LIKE $id";
             $conn->query($sql);
+            header("Location: ?link=login.php");
         } else {
             echo("
             <script>
