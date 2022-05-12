@@ -1,6 +1,4 @@
 <?php
-
     unset($_SESSION["user"]);
-    header("Location: ?link=login.php");
-
+    echo "<script>window.location.href= '?link=login.php';</script>";
 ?>

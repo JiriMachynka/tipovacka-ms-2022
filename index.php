@@ -1,8 +1,6 @@
 <?php
-
-session_start();
-include_once("config.php");
-
+    session_start();
+    include_once("config.php");
 ?>
 <html>
     <head>
@@ -35,13 +33,12 @@ include_once("config.php");
 
                 $sql = "SELECT * FROM matches WHERE locked LIKE 1";
                 $result = $conn->query($sql);
-                if($result->num_rows > 0) {
-                    echo("
+                if($result->num_rows > 0) { ?>
                         <table>                
                         <thead>
                         <tr>
                             <th colspan='5'>Zápas</th>
-                            <th colspan='$player_count'>Hráči</th>
+                            <th colspan='<?php echo $player_count ?>'>Hráči</th>
                         </tr>
                         <tr>
                             <th>Čas do začátku zápasu</th>
@@ -49,20 +46,20 @@ include_once("config.php");
                             <th>Domácí</th>
                             <th>Skóre</th>
                             <th>Hosté</th>
-                    ");
+                <?php
                     $sql2 = "SELECT username FROM users";
                     $result2 = $conn->query($sql2);
                     if ($result2->num_rows > 0) {
                         while ($row2 = $result2->fetch_assoc()) {
                             $username = $row2["username"];
-                            echo("<th>$username</th>");
+                            ?> <th><?php echo $username ?></th> <?php
                         }
                     }
-                    echo("
+                    ?>
                         </tr>
                         </thead>
                         <tbody>
-                    ");
+                    <?php
                     while ($row = $result->fetch_assoc()) {
                         include_once("date-format.php");
                         $start = dateFormat($row["start"]);
@@ -72,14 +69,14 @@ include_once("config.php");
                         $home_score = $row["home_score"];
                         $away_score = $row["away_score"];
                         $away = $row["away"];
-                        echo("
+                        ?>
                             <tr class='match'>
-                                <td class='$deltaTime'></td>
-                                <td>$start</td>
-                                <td>$home</td>
-                                <td>$home_score:$away_score</td>
-                                <td>$away</td>
-                        ");
+                                <td class='<?php echo $deltaTime ?>'></td>
+                                <td><?php echo $start ?></td>
+                                <td><?php echo $home ?></td>
+                                <td><?php echo $home_score ?>:<?php echo $away_score ?></td>
+                                <td><?php echo $away ?></td>
+                        <?php
                         $sql2 = "SELECT * 
                                 FROM tips 
                                 JOIN matches ON tips.match_id = matches.id 
@@ -90,19 +87,19 @@ include_once("config.php");
                             while ($row2 = $result2->fetch_assoc()) {
                                 $home_score_tip = $row2["home_score_tip"];
                                 $away_score_tip = $row2["away_score_tip"];
-                                echo("
-                                    <td>$home_score_tip:$away_score_tip</td>
-                                ");
+                                ?>
+                                    <td><?php echo $home_score_tip ?>:<?php echo $away_score_tip ?></td>
+                                <?php
                             }
                         }
-                        echo("</tr>");
+                        ?> </tr> <?php
                     }
-                    echo("
+                    ?>
                         </tbody>
                         </table>
-                    ");
+                    <?php
                 } else {
-                    echo("<strong>V nabídce nejsou žádné zápasy</strong>");
+                    ?><strong>V nabídce nejsou žádné zápasy</strong><?php
                 }
             }
             ?>

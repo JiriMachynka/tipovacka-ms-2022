@@ -14,7 +14,6 @@
             );
         }
     }
-
 ?>
 
 <div class='row'>
@@ -48,7 +47,6 @@
 </div>
 
 <?php
-
     if($_POST) {
         $winner = $_POST["winner"];
         $finalist = $_POST["finalist"];
@@ -79,12 +77,11 @@
                 $conn->query($newShooter);
             }
         }
-        header("Location: ?link=my-profile.php&saved=1");
+        exit(header("Location: ?link=my-profile.php&saved=1"));
         
     }
 
-    if(isset($_GET["saved"]) && $_GET["saved"] == 1) {
-        echo("
+    if(isset($_GET["saved"]) && $_GET["saved"] == 1) { ?>
             <script>
                 Swal.fire({
                     position: 'top',
@@ -94,9 +91,7 @@
                     timer: 1500
                 });
             </script>
-        ");
-    }
-
+    <?php } 
 ?>
 
 <script>

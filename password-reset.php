@@ -13,7 +13,6 @@
     </div>
 </div>
 <?php
-
     $id = $_GET["id"];
     if ($_POST) {
         $password = $_POST["password"];
@@ -24,9 +23,8 @@
                     SET password = $password
                     WHERE id LIKE $id";
             $conn->query($sql);
-            header("Location: ?link=login.php");
-        } else {
-            echo("
+            exit(header("Location: ?link=login.php"));
+        } else { ?>
             <script>
                 Swal.fire({
                     icon: 'error',
@@ -34,8 +32,7 @@
                     text: 'Hesla se neshodují'
                 });
             </script>
-            ");
+            <?php
         }
     }
-
 ?>

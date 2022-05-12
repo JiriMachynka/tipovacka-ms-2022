@@ -1,5 +1,4 @@
 <?php
-
     $id_user = $_GET["id"];
 
     $sql = "SELECT * FROM matches";
@@ -27,9 +26,8 @@
                     "password" => $row["password"],
                     "admin" => $row["admin"]
                 );
-                header("Location: index.php");
+                exit(header("Location: index.php"));
             }
         }
     }
-    // header("Location: ?link=login.php");
 ?>

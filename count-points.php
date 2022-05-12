@@ -1,5 +1,4 @@
 <?php
-
     $match_id = $_GET["match_id"];
     $home_score = $_SESSION["final_match_score"]["home_score"];
     $away_score = $_SESSION["final_match_score"]["away_score"];
@@ -34,6 +33,5 @@
     }
     // print_r($_SESSION["final_match_score"]);
     unset($_SESSION["final_match_score"]);
-    header("Location: ?link=manage-matches.php");
-
+    exit(header("Location: ?link=manage-matches.php"));
 ?>

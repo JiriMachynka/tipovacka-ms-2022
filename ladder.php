@@ -7,7 +7,6 @@
     </thead>
     <tbody>
 <?php 
-
     // Point system
     $sql = "SELECT id_user, SUM(points)
             FROM tips
@@ -17,7 +16,7 @@
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $totalPoints = 0;
-            echo("<tr>");
+            ?><tr><?php
             $username = "";
             $id_user = $row["id_user"];
             $points = $row["SUM(points)"];
@@ -54,14 +53,13 @@
             if ($_SESSION["user"]["username"] == $username) {
                 $styling = "background-color: yellow; ";
             }
-            echo("
-                <td style='$styling'>$username</td>
-                <td style='$styling'>$totalPoints <abbre class='info' title='Body za střelce'>($shooterPoints)</abbre></td>
-            ");
-            echo("</tr>");
+            ?>
+                <td style='<?php echo $styling ?>'><?php echo $username ?></td>
+                <td style='<?php echo $styling ?>'><?php echo $totalPoints ?> <abbre class='info' title='Body za střelce'>(<?php echo $shooterPoints ?>)</abbre></td>
+            </tr>
+            <?php
         }
     }
-
 ?>
 
 </tbody>

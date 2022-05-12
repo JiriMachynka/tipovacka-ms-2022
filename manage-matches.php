@@ -1,6 +1,5 @@
 <?php 
-    if (isset($_SESSION["edited_match"])) {
-        echo("
+    if (isset($_SESSION["edited_match"])) { ?>
             <div class='row'>
                 <div class='col-4'>
                 </div>
@@ -8,23 +7,22 @@
                 <h4>Upravit zápas</h4><hr>
                 <form method='POST'> 
                     <h5 for='floatingInput'>Datum:</h5>
-                    <input type='datetime-local' name='start' value='".str_replace(" ", "T", $_SESSION["edited_match"]["start"])."'/>
+                    <input type='datetime-local' name='start' value='<?php echo str_replace(" ", "T", $_SESSION["edited_match"]["start"]) ?>'/>
                     <h5 for='floatingInput'>Domácí:</h5>
-                    <input type='text' class='form-control' id='home_edit' name='home' value='".$_SESSION["edited_match"]["home"]."' />
+                    <input type='text' class='form-control' id='home_edit' name='home' value='<?php echo $_SESSION["edited_match"]["home"] ?>' />
                     <h5 for='floatingInput'>Skóre domácí:</h5>
-                    <input type='number' min='0' class='form-control' name='home_score' value='".$_SESSION["edited_match"]["home_score"]."' disabled />
+                    <input type='number' min='0' class='form-control' name='home_score' value='<?php echo $_SESSION["edited_match"]["home_score"] ?>' disabled />
                     <h5 for='floatingInput'>Skóre domácí:</h5>
-                    <input type='number' min='0' class='form-control' name='away_score' value='".$_SESSION["edited_match"]["away_score"]."' disabled />
+                    <input type='number' min='0' class='form-control' name='away_score' value='<?php $_SESSION["edited_match"]["away_score"] ?>' disabled />
                     <h5 for='floatingInput'>Hosté:</h5>
-                    <input type='text' class='form-control' id='away_edit' name='away' value='".$_SESSION["edited_match"]["away"]."' />
+                    <input type='text' class='form-control' id='away_edit' name='away' value='<?php echo $_SESSION["edited_match"]["away"] ?>' />
                     <input class='form-control btn btn-primary mt-1' type='submit' name='submit' value='Upravit zápas'/>
                 </form>
                 </div>
             </div>
-        ");
+        <?php
     } 
-    elseif (isset($_SESSION["final_match_score"])) {
-        echo("
+    elseif (isset($_SESSION["final_match_score"])) { ?>
             <div class='row'>
                 <div class='col-4'>
                 </div>
@@ -32,22 +30,21 @@
                 <h4>Upravit zápas</h4><hr>
                 <form method='POST'> 
                     <h5 for='floatingInput'>Datum:</h5>
-                    <input type='datetime-local' name='start' value='".str_replace(" ", "T", $_SESSION["final_match_score"]["start"])."' />
+                    <input type='datetime-local' name='start' value='<?php echo str_replace(" ", "T", $_SESSION["final_match_score"]["start"]) ?>' />
                     <h5 for='floatingInput'>Domácí:</h5>
-                    <input type='text' class='form-control' name='home_final' value='".$_SESSION["final_match_score"]["home"]."' disabled />
+                    <input type='text' class='form-control' name='home_final' value='<?php echo $_SESSION["final_match_score"]["home"] ?>' disabled />
                     <h5 for='floatingInput'>Skóre domácí:</h5>
-                    <input type='number' min='0' class='form-control' name='home_score' value='".$_SESSION["final_match_score"]["home_score"]."' />
+                    <input type='number' min='0' class='form-control' name='home_score' value='<?php echo $_SESSION["final_match_score"]["home_score"] ?>' />
                     <h5 for='floatingInput'>Skóre domácí:</h5>
-                    <input type='number' min='0' class='form-control' name='away_score' value='".$_SESSION["final_match_score"]["away_score"]."' />
+                    <input type='number' min='0' class='form-control' name='away_score' value='<?php echo $_SESSION["final_match_score"]["away_score"] ?>' />
                     <h5 for='floatingInput'>Hosté:</h5>
-                    <input type='text' class='form-control' name='away_final' value='".$_SESSION["final_match_score"]["away"]."' disabled />
+                    <input type='text' class='form-control' name='away_final' value='<?php echo $_SESSION["final_match_score"]["away"] ?>' disabled />
                     <input class='form-control btn btn-primary mt-1' type='submit' name='submit' value='Konečný výsledek'/>
                 </form>
                 </div>
             </div>
-        ");
-    } else {
-        echo("
+        <?php
+    } else { ?>
             <div class='row'>
                 <div class='col-4'>
                 </div>
@@ -69,15 +66,13 @@
                 </form>
                 </div>
             </div>
-        ");
+        <?
     } ?>
 <div class="row">
 <?php
-
     $sql = "SELECT * FROM matches";
     $result = $conn->query($sql);
-    if ($result->num_rows > 0) {
-        echo("
+    if ($result->num_rows > 0) { ?>
         <h3>Přehled zápasů</h3>
         <table>
         <thead>
@@ -89,7 +84,7 @@
             <th colspan='3'>Akce</th>
             </tr>
             </thead>
-        ");
+        <?php
         while ($row = $result->fetch_assoc()) { 
             $locked = $row["locked"];
             include_once("date-format.php");
@@ -153,9 +148,8 @@
                 $conn->query($sql); 
             }
 
-            header("Location: ?link=manage-matches.php");
-        } else {
-            echo("
+            exit(header("Location: ?link=manage-matches.php"));
+        } else { ?>
             <script>
             Swal.fire({
                 icon: 'error',
@@ -163,7 +157,7 @@
                 text: 'Vyplňte všechna pole'
             });
             </script>
-            ");
+            <?php
         }
     } elseif ($_POST && $_POST["submit"] == 'Upravit zápas') {
         $home = $_POST["home"];
@@ -176,7 +170,7 @@
                 WHERE id LIKE $match_id";
         $conn->query($sql);
         unset($_SESSION["edited_match"]);
-        header("Location: ?link=manage-matches.php");
+        exit(header("Location: ?link=manage-matches.php"));
     } elseif ($_POST && $_POST["submit"] == 'Konečný výsledek') {
         $_SESSION["final_match_score"]["home_score"] = $_POST["home_score"];
         $_SESSION["final_match_score"]["away_score"] = $_POST["away_score"];
@@ -191,8 +185,7 @@
                     played = 1
                 WHERE id LIKE $match_id";
         $conn->query($sql);
-        header("Location: ?link=count-points.php&match_id=$match_id");
+        exit(header("Location: ?link=count-points.php&match_id=$match_id"));
     }
-
 ?>
 </div>

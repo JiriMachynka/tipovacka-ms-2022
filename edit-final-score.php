@@ -14,5 +14,5 @@
             );
         }
     }
-    header("Location: ?link=manage-matches.php");
+    exit(header("Location: ?link=manage-matches.php"));
 ?>
