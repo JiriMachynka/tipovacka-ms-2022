@@ -77,8 +77,7 @@
                 $conn->query($newShooter);
             }
         }
-        exit(header("Location: ?link=my-profile.php&saved=1"));
-        
+        echo "<script>window.location.href = '?link=my-profile.php&saved=1'</script>";
     }
 
     if(isset($_GET["saved"]) && $_GET["saved"] == 1) { ?>
@@ -91,14 +90,14 @@
                     timer: 1500
                 });
             </script>
-    <?php } 
+<?php } 
 ?>
 
 <script>
     window.onload = () => {
-        <?php if(isset($_SESSION["long-shot"]["winner"])): echo("chooseTeam(\"winner\",\"".$_SESSION["long-shot"]["winner"]."\");\n"); endif; ?>
-        <?php if(isset($_SESSION["long-shot"]["finalist"])): echo("chooseTeam(\"finalist\",\"".$_SESSION["long-shot"]["finalist"]."\");\n"); endif; ?>
-        <?php if(isset($_SESSION["long-shot"]["semifinalist1"])): echo("chooseTeam(\"semifinalist1\",\"".$_SESSION["long-shot"]["semifinalist1"]."\");\n"); endif; ?>
-        <?php if(isset($_SESSION["long-shot"]["semifinalist2"])): echo("chooseTeam(\"semifinalist2\",\"".$_SESSION["long-shot"]["semifinalist2"]."\");\n"); endif; ?>
+<?php if(isset($_SESSION["long-shot"]["winner"])): echo("chooseTeam(\"winner\",\"".$_SESSION["long-shot"]["winner"]."\");\n"); endif; ?>
+<?php if(isset($_SESSION["long-shot"]["finalist"])): echo("chooseTeam(\"finalist\",\"".$_SESSION["long-shot"]["finalist"]."\");\n"); endif; ?>
+<?php if(isset($_SESSION["long-shot"]["semifinalist1"])): echo("chooseTeam(\"semifinalist1\",\"".$_SESSION["long-shot"]["semifinalist1"]."\");\n"); endif; ?>
+<?php if(isset($_SESSION["long-shot"]["semifinalist2"])): echo("chooseTeam(\"semifinalist2\",\"".$_SESSION["long-shot"]["semifinalist2"]."\");\n"); endif; ?>
     }
 </script>

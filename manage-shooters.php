@@ -13,7 +13,7 @@
                     </tr>
                 </thead>
                 <tbody>
-        <?php
+<?php
         while ($row = $result->fetch_assoc()) {
             $shooter = $row["shooter"];
             $goals = $row["goals"];
@@ -22,17 +22,16 @@
                     <td><?php echo $shooter ?></td>
                     <td><?php echo $goals ?></td>
                     <td>
-            <?php
+<?php
                 if ($goals > 0) { ?>
                     <a href='?link=edit-goals.php&shooter=<?php echo $shooter ?>&method=decrease'><i class='fas fa-minus'></i></a>
-                <?php } else { ?>
+<?php } else { ?>
                     <div style='padding: 8px 7px; '></div>
-                <?php } ?>
+<?php } ?>
                     </td>
                     <td><a href='?link=edit-goals.php&shooter=<?php echo $shooter ?>&method=increase'><i class='fas fa-plus'></i></a></td>
                 </tr>
-        <?php } ?>
+<?php } ?>
             </tbody>
             </table>
-    <?php }
-?>
+<?php } ?>

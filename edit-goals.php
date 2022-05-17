@@ -16,5 +16,5 @@
             SET goals = $goals
             WHERE shooter LIKE '$shooter'";
     $conn->query($sql);
-    "Location: ?link=manage-shooters.php");
+    echo "<script>window.location.href = '?link=manage-shooters.php'</script>";
 ?>

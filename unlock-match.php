@@ -6,5 +6,5 @@
             WHERE id LIKE '$id'";
     $conn->query($sql);
     //Nasměrování na vynulování bodů pro daný zápas
-    exit(header("Location: ?link=null-points.php&match_id=$id"));
+    echo "<script>window.location.href = '?link=null-points.php&match_id=$id'</script>";
 ?>

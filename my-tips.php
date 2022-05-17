@@ -13,13 +13,13 @@
                     </form>
                 </div>
             </div>
-    <?php }
+<?php }
 
     if($_POST) {
         $home_score_tip = $_POST["home_score_tip"];
         $away_score_tip = $_POST["away_score_tip"];
         $match_id = $_SESSION["tip"]["match_id"];
-        exit(header("Location: ?link=update-my-tip.php&match_id=$match_id&home_score_tip=$home_score_tip&away_score_tip=$away_score_tip"));
+        echo "<script>window.location.href = '?link=update-my-tip.php&match_id=$match_id&home_score_tip=$home_score_tip&away_score_tip=$away_score_tip'</script>";
     }
 
     //Zjištění id všech zápasů, jenž nejsou uzamčené
@@ -39,7 +39,7 @@
                         <th>Akce</th>
                     </tr>
                 </thead>
-    <?php
+<?php
         while($row = $result->fetch_assoc()) {
             //Deklarace $match_id jako id zápasu pro pozdější použití u dotazu $sql2
             $match_id = $row["id"];
@@ -65,11 +65,10 @@
                             <td><?php echo $row2["away"] ?></td>
                             <td><a href='?link=edit-my-tip.php&match_id=<?php echo $match_id ?>'>Upravit tip</a></td>
                         </tr>
-                    <?php
+<?php
                 }
             }
         }
     } else { ?>
         <strong>V nabídce nejsou žádné zápasy</strong>
-    <?php }
-?>
+<?php } ?>

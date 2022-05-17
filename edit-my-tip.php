@@ -17,5 +17,5 @@
             );
         }
     }
-    exit(header("Location: ?link=my-tips.php"));
+    echo '<script>window.location.href = "?link=my-tips.php"</script>';
 ?>

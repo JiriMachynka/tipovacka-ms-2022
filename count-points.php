@@ -11,16 +11,15 @@
         while($row = $result->fetch_assoc()) {
             $home_score_tip = $row["home_score_tip"];
             $away_score_tip = $row["away_score_tip"];
-            // print_r($_SESSION["final_match_score"]);
 
             $points = 0;
-            // Výhra domácích
+            // Home team wins
             if ($home_score > $away_score && $home_score_tip > $away_score_tip) {
                 $points = ($home_score == $home_score_tip && $away_score == $away_score_tip) ? 3 : 1;
-            // Výhra hosté
+            // Away team wins
             } elseif ($home_score < $away_score && $home_score_tip < $away_score_tip) {
                 $points = ($home_score == $home_score_tip && $away_score == $away_score_tip) ? 3 : 1;
-            // Remíza
+            // Draw
             } elseif ($home_score == $away_score && $home_score_tip == $away_score_tip) {
                 $points = ($home_score == $home_score_tip) ? 3 : 1;
             }
@@ -31,7 +30,6 @@
             $conn->query($sql2);
         }
     }
-    // print_r($_SESSION["final_match_score"]);
     unset($_SESSION["final_match_score"]);
-    exit(header("Location: ?link=manage-matches.php"));
+    echo '<script>window.location.href = "?link=manage-matches.php"</script>';
 ?>

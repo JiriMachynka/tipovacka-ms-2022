@@ -10,5 +10,5 @@
             WHERE match_id = $match_id AND id_user = $id_user";
     $conn->query($sql);
     unset($_SESSION["tip"]);
-    exit(header("Location: ?link=my-tips.php"));
+    echo "<script>window.location.href = '?link=my-tips.php'</script>";
 ?>

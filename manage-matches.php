@@ -20,7 +20,7 @@
                 </form>
                 </div>
             </div>
-        <?php
+<?php
     } 
     elseif (isset($_SESSION["final_match_score"])) { ?>
             <div class='row'>
@@ -43,7 +43,7 @@
                 </form>
                 </div>
             </div>
-        <?php
+<?php
     } else { ?>
             <div class='row'>
                 <div class='col-4'>
@@ -84,7 +84,7 @@
             <th colspan='3'>Akce</th>
             </tr>
             </thead>
-        <?php
+<?php
         while ($row = $result->fetch_assoc()) { 
             $locked = $row["locked"];
             include_once("date-format.php");
@@ -103,13 +103,13 @@
                         <i class='fas fa-lock-open'></i>
                         </a>
                     </td>
-                    <?php } ?>
+<?php } ?>
                     </tr>
-            <?php } else { ?>
+<?php } else { ?>
                     <td><a href='?link=edit-final-score.php&match_id=<?php echo($row["id"]); ?>'><i class='fas fa-flag-checkered'></i></a></td>
                     <td><a href='?link=unlock-match.php&id=<?php echo($row["id"]); ?>'><i class='fas fa-lock'></i></a></td>
                     </tr>
-            <?php } }
+<?php } }
         echo("</table>");
     } else {
         echo("<strong>V nabídce nejsou žádné zápasy</strong>");
@@ -148,7 +148,7 @@
                 $conn->query($sql); 
             }
 
-            exit(header("Location: ?link=manage-matches.php"));
+            echo "<script>window.location.href = '?link=manage-matches.php'</script>";
         } else { ?>
             <script>
             Swal.fire({
@@ -157,8 +157,7 @@
                 text: 'Vyplňte všechna pole'
             });
             </script>
-            <?php
-        }
+<?php }
     } elseif ($_POST && $_POST["submit"] == 'Upravit zápas') {
         $home = $_POST["home"];
         $away = $_POST["away"];
@@ -170,7 +169,7 @@
                 WHERE id LIKE $match_id";
         $conn->query($sql);
         unset($_SESSION["edited_match"]);
-        exit(header("Location: ?link=manage-matches.php"));
+        echo "<script>window.location.href = '?link=manage-matches.php'</script>";
     } elseif ($_POST && $_POST["submit"] == 'Konečný výsledek') {
         $_SESSION["final_match_score"]["home_score"] = $_POST["home_score"];
         $_SESSION["final_match_score"]["away_score"] = $_POST["away_score"];
@@ -185,7 +184,7 @@
                     played = 1
                 WHERE id LIKE $match_id";
         $conn->query($sql);
-        exit(header("Location: ?link=count-points.php&match_id=$match_id"));
+        echo "<script>window.location.href = '?link=count-points.php&match_id=$match_id'</script>";
     }
 ?>
 </div>

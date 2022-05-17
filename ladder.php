@@ -57,7 +57,7 @@
                 <td style='<?php echo $styling ?>'><?php echo $username ?></td>
                 <td style='<?php echo $styling ?>'><?php echo $totalPoints ?> <abbre class='info' title='Body za střelce'>(<?php echo $shooterPoints ?>)</abbre></td>
             </tr>
-            <?php
+<?php
         }
     }
 ?>

@@ -35,8 +35,7 @@
                             text: 'Hesla musí být stejná'
                         });
                     </script>
-            <?php
-            } else {
+<?php } else {
                 $password = password_hash($password1, PASSWORD_DEFAULT);
                 
                 $fine = TRUE;
@@ -54,7 +53,7 @@
                                         text: 'Zvolte jiný email'
                                     });
                                 </script>
-                            <?php
+<?php
                         } elseif ($username == $row["username"]) {
                             $fine = FALSE;
                             ?>
@@ -65,7 +64,7 @@
                                         text: 'Zvolte jiné uživatelské jméno'
                                     });
                                 </script>
-                            <?php
+<?php
                         }
                     }
                 } 
@@ -78,7 +77,7 @@
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $id = $row["id"];
-                            exit(header("Location: ?link=copy-matches.php&id=$id"));
+                            echo "<script>window.location.href = '?link=copy-matches.php&id=$id'</script>";
                         }
                     }
                 }
@@ -92,7 +91,4 @@
                         text: 'Vyplňte všechna pole'
                     });
                 </script>
-            <?php
-        }
-    }
-?>
+<?php } } ?>

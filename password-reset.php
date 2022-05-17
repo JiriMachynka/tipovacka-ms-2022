@@ -23,7 +23,7 @@
                     SET password = $password
                     WHERE id LIKE $id";
             $conn->query($sql);
-            exit(header("Location: ?link=login.php"));
+            echo "<script>window.location.href = '?link=login.php'</script>";
         } else { ?>
             <script>
                 Swal.fire({
@@ -32,7 +32,4 @@
                     text: 'Hesla se neshodují'
                 });
             </script>
-            <?php
-        }
-    }
-?>
+<?php } } ?>

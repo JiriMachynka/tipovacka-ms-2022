@@ -12,7 +12,7 @@
                     <th>Obsah zprávy</th>
                 </tr>
             </tbody>
-        <?php
+<?php
         while ($row = $result->fetch_assoc()) {
             $id = $row["id"];
             $username = $row["username"];

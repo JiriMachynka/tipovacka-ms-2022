@@ -40,7 +40,7 @@
                                 text: 'Špatné heslo'
                             });
                         </script>
-                    <?php
+<?php
                     }
                 }
         } else { ?>
@@ -51,7 +51,7 @@
                         text: 'V databázi se nenachází žádný účet'
                     });
                 </script>    
-            <?php
+<?php
         }
     } else { ?>
             <script>
@@ -61,7 +61,7 @@
                     text: 'Vyplňte všechna pole'
                 });
             </script>
-        <?php
+<?php
     }
 }
 ?>
