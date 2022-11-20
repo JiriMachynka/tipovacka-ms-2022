@@ -1,5 +1,4 @@
 <?php
-
     $match_id = $_GET["match_id"];
     $id_user = $_SESSION["user"]["id"];
     $sql =  "SELECT * 
@@ -18,6 +17,5 @@
             );
         }
     }
-    header("Location: ?link=my-tips.php");
-
+    echo '<script>window.location.href = "?link=my-tips.php"</script>';
 ?>

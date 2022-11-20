@@ -1,5 +1,4 @@
 <?php
-
     $id = $_GET["match_id"];
     $sql = "SELECT * FROM matches WHERE id LIKE $id";
     $result = $conn->query($sql);
@@ -15,6 +14,5 @@
             );
         }
     }
-    header("Location: ?link=manage-matches.php");
-
+    echo '<script>window.location.href = "?link=manage-matches.php"</script>';
 ?>

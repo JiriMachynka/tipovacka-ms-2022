@@ -19,7 +19,6 @@
     </div>  
 </div>
 <?php 
-
     if($_POST) {
         $username = $_POST["username"];
         $email = $_POST["email"];
@@ -28,8 +27,7 @@
 
         if(!empty($username) && !empty($email) && !empty($password1) && !empty($password2)) {
             $password = "";
-            if ($password1 != $password2) {
-                echo("
+            if ($password1 != $password2) { ?>
                     <script>
                         Swal.fire({
                             icon: 'error',
@@ -37,8 +35,7 @@
                             text: 'Hesla musí být stejná'
                         });
                     </script>
-                ");
-            } else {
+<?php } else {
                 $password = password_hash($password1, PASSWORD_DEFAULT);
                 
                 $fine = TRUE;
@@ -48,7 +45,7 @@
                     while ($row = $result->fetch_assoc()) {
                         if ($email == $row["email"]) {
                             $fine = FALSE;
-                            echo("
+                            ?>
                                 <script>
                                     Swal.fire({
                                         icon: 'error',
@@ -56,10 +53,10 @@
                                         text: 'Zvolte jiný email'
                                     });
                                 </script>
-                            ");
+<?php
                         } elseif ($username == $row["username"]) {
                             $fine = FALSE;
-                            echo("
+                            ?>
                                 <script>
                                     Swal.fire({
                                         icon: 'error',
@@ -67,7 +64,7 @@
                                         text: 'Zvolte jiné uživatelské jméno'
                                     });
                                 </script>
-                            ");
+<?php
                         }
                     }
                 } 
@@ -80,14 +77,13 @@
                     if ($result->num_rows > 0) {
                         while ($row = $result->fetch_assoc()) {
                             $id = $row["id"];
-                            header("Location: ?link=copy-matches.php&id=$id");
+                            echo "<script>window.location.href = '?link=copy-matches.php&id=$id'</script>";
                         }
                     }
                 }
             }
             
-        } else {
-            echo("
+        } else { ?>
                 <script>
                     Swal.fire({
                         icon: 'error',
@@ -95,8 +91,4 @@
                         text: 'Vyplňte všechna pole'
                     });
                 </script>
-            ");
-        }
-    }
-
-?>
+<?php } } ?>

@@ -1,5 +1,4 @@
 <?php
-
     $match_id = $_GET["match_id"];
     $id_user = $_SESSION["user"]["id"];
     $home_score_tip = $_GET["home_score_tip"];
@@ -11,6 +10,5 @@
             WHERE match_id = $match_id AND id_user = $id_user";
     $conn->query($sql);
     unset($_SESSION["tip"]);
-    header("Location: ?link=my-tips.php");
-
+    echo "<script>window.location.href = '?link=my-tips.php'</script>";
 ?>

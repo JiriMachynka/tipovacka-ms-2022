@@ -14,7 +14,6 @@
     </div>
 </div>
 <?php 
-    
     if($_POST) {
         $email = $_POST["email"];
         $password = $_POST["password"];
@@ -32,9 +31,8 @@
                             "password" => $row["password"],
                             "admin" => $row["admin"]
                         );
-                        header("Location: index.php");
-                    } else {
-                        echo("
+                        echo "<script>window.location.href= 'index.php';</script>";
+                    } else { ?>
                         <script>
                             Swal.fire({
                                 icon: 'error',
@@ -42,11 +40,10 @@
                                 text: 'Špatné heslo'
                             });
                         </script>
-                        ");
+<?php
                     }
                 }
-        } else {
-            echo("
+        } else { ?>
                 <script>    
                     Swal.fire({
                         icon: 'error',
@@ -54,10 +51,9 @@
                         text: 'V databázi se nenachází žádný účet'
                     });
                 </script>    
-            ");
+<?php
         }
-    } else {
-        echo("
+    } else { ?>
             <script>
                 Swal.fire({
                     icon: 'error',
@@ -65,10 +61,7 @@
                     text: 'Vyplňte všechna pole'
                 });
             </script>
-        ");
+<?php
     }
-
-
 }
-
 ?>

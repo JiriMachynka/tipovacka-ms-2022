@@ -1,5 +1,4 @@
 <?php
-
     $shooter = str_replace("%20", " ", $_GET["shooter"]);
     $method = $_GET["method"];
     $goals = 0;
@@ -17,6 +16,5 @@
             SET goals = $goals
             WHERE shooter LIKE '$shooter'";
     $conn->query($sql);
-    header("Location: ?link=manage-shooters.php");
-
+    echo "<script>window.location.href = '?link=manage-shooters.php'</script>";
 ?>

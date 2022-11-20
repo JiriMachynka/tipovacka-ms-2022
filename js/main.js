@@ -1,28 +1,62 @@
 const groups = [
     "Skupina A",
     "Skupina B",
+    "Skupina C",
+    "Skupina D",
+    "Skupina E",
+    "Skupina F",
+    "Skupina G",
+    "Skupina H",
 ]
 
 const teams = {
     "Skupina A": [
-        "Kanada",
-        "Německo",
-        "Švýcarsko",
-        "Slovensko",
-        "Dánsko",
-        "Kazachstán",
-        "Francie",
-        "Itálie"
+        "Katar",
+        "Ekvádor",
+        "Senegal",
+        "Nizozemsko",
     ],
     "Skupina B": [
-        "Finsko",
+        "Anglie",
+        "Írán",
         "USA",
-        "Česko",
-        "Švédsko",
-        "Lotyšsko",
-        "Norsko",
-        "Velká británie",
-        "Rakousko"
+        "Wales"
+    ],
+    "Skupina C": [
+        "Argentina",
+        "Saudská Arábie",
+        "USA",
+        "Wales"
+    ],
+    "Skupina D": [
+        "Francie",
+        "Austrálie",
+        "Dánsko",
+        "Tunisko"
+    ],
+    "Skupina E": [
+        "Španělsko",
+        "Kostarika",
+        "Německo",
+        "Japonsko"
+    ],
+    "Skupina F": [
+        "Belgie",
+        "Kanada",
+        "Maroko",
+        "Chorvatsko"
+    ],
+    "Skupina G": [
+        "Brazílie",
+        "Srbsko",
+        "Švýcarsko",
+        "Kamerun"
+    ],
+    "Skupina H": [
+        "Portugalsko",
+        "Ghana",
+        "Uruguay",
+        "Jižní Korea"
     ],
 }
 
@@ -42,12 +76,6 @@ const selectionForTeams = (id) => {
         }
     }
 }
-
-// selectionForTeams('winner')
-// selectionForTeams('finalist')
-// selectionForTeams('semifinalist1')
-// selectionForTeams('semifinalist2')
-
 
 const chooseTeam = (select, team) => {
     const element = document.getElementById(select)
