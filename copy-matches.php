@@ -6,7 +6,6 @@
     if ($result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
             $match_id = $row["id"];
-
             $sql = "INSERT INTO tips (match_id, id_user, home_score_tip, away_score_tip)
                     VALUES ('$match_id', '$id_user', 0, 0)";
             $conn->query($sql);

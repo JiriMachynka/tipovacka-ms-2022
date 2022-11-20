@@ -22,7 +22,7 @@
             elseif(isset($_GET["link"])) include_once($_GET["link"]);
             elseif(!isset($_GET["link"]) && !isset($_SESSION["user"])) include_once("login.php");
             else {
-                //Zjištění celkového počtu hráčů
+                // Count of players
                 $sql = "SELECT COUNT(*) FROM users";
                 $result = $conn->query($sql);
                 $player_count = 0;

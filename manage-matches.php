@@ -184,6 +184,5 @@
                     WHERE id LIKE $match_id";
             $conn->query($sql);
             echo "<script>window.location.href = '?link=count-points.php&match_id=$match_id'</script>";
-        } 
     } ?>
     </div>
