@@ -2,62 +2,27 @@ const groups = [
     "Skupina A",
     "Skupina B",
     "Skupina C",
-    "Skupina D",
-    "Skupina E",
-    "Skupina F",
-    "Skupina G",
-    "Skupina H",
 ]
 
 const teams = {
     "Skupina A": [
-        "Katar",
-        "Ekvádor",
-        "Senegal",
-        "Nizozemsko",
+        "Liberec",
+        "Třinec",
+        "Kometa Brno",
+        "Olomouc",
     ],
     "Skupina B": [
-        "Anglie",
-        "Írán",
-        "USA",
-        "Wales"
+        "Plzeň",
+        "Litvínov",
+        "Mladá Boleslav",
+        "Karlovy Vary",
     ],
     "Skupina C": [
-        "Argentina",
-        "Saudská Arábie",
-        "USA",
-        "Wales"
-    ],
-    "Skupina D": [
-        "Francie",
-        "Austrálie",
-        "Dánsko",
-        "Tunisko"
-    ],
-    "Skupina E": [
-        "Španělsko",
-        "Kostarika",
-        "Německo",
-        "Japonsko"
-    ],
-    "Skupina F": [
-        "Belgie",
-        "Kanada",
-        "Maroko",
-        "Chorvatsko"
-    ],
-    "Skupina G": [
-        "Brazílie",
-        "Srbsko",
-        "Švýcarsko",
-        "Kamerun"
-    ],
-    "Skupina H": [
-        "Portugalsko",
-        "Ghana",
-        "Uruguay",
-        "Jižní Korea"
-    ],
+        "Pardubice",
+        "Vítkovice",
+        "Sparta Praha",
+        "Mountfield HK"
+    ]
 }
 
 const selectionForTeams = (id) => {
